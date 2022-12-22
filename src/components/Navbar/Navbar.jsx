@@ -100,7 +100,7 @@ export default function ButtonAppBar() {
                 },
               }}
             >
-              Join
+              Sign In
             </Button>
           </Stack>
         </Toolbar>
