@@ -1,3 +1,8 @@
 .pickBazarImg {
   height: 2rem;
 }
+@media (max-width: 1024px) {
+  .css-8u39c-MuiTypography-root {
+    display: none;
+  }
+}
