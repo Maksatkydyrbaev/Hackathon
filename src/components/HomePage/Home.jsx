@@ -7,7 +7,7 @@ import ChairIcon from "@mui/icons-material/Chair";
 import ChairAltIcon from "@mui/icons-material/ChairAlt";
 import TableRestaurantIcon from "@mui/icons-material/TableRestaurant";
 import { Carousel } from "react-carousel-minimal";
-import { withTheme } from "@emotion/react";
+import ProdList from "../Product/ProdList/ProdList";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -126,6 +126,7 @@ export default function Home() {
               border: "1px solid rgba(185, 187, 190)",
             }}
           />
+          <ProdList />
         </Grid>
       </Grid>
     </Box>
