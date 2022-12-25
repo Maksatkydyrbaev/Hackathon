@@ -1,13 +1,14 @@
 import { Grid, Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
-import React from "react";
+import React, { useContext } from "react";
 import BedIcon from "@mui/icons-material/Bed";
 import ChairIcon from "@mui/icons-material/Chair";
 import ChairAltIcon from "@mui/icons-material/ChairAlt";
 import TableRestaurantIcon from "@mui/icons-material/TableRestaurant";
 import { Carousel } from "react-carousel-minimal";
 import ProdList from "../Product/ProdList/ProdList";
+import { productContext } from "../Context/ProductContextProvider";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -26,6 +27,7 @@ const slideNumberStyle = {
 };
 
 export default function Home() {
+  const { fetchByParams } = useContext(productContext);
   const data = [
     {
       image:
@@ -46,12 +48,14 @@ export default function Home() {
         <Grid item xs={3}>
           <Box
             sx={{
+              width: "20%",
               padding: "1.25rem",
               display: "grid",
               gridAutoFlow: "column",
               gridTemplateColumns: "repeat(2,minmax(0,1fr))",
               gridTemplateRows: "repeat(2,140px)",
               gap: 2,
+              position: "fixed",
             }}
           >
             <Item
@@ -61,6 +65,11 @@ export default function Home() {
                 justifyContent: "center",
                 alignItems: "center",
                 fontSize: "1.5rem",
+              }}
+              value="Bed"
+              onClick={(e) => {
+                fetchByParams("type", e.target.value);
+                console.log(e.target.value);
               }}
             >
               <BedIcon sx={{ fontSize: "3rem" }} />
@@ -74,10 +83,13 @@ export default function Home() {
                 alignItems: "center",
                 fontSize: "1.5rem",
               }}
+              value="Sofa"
+              onClick={(e) => fetchByParams("type", e.target.value)}
             >
               <ChairIcon sx={{ fontSize: "3rem" }} />
               Sofa
             </Item>
+
             <Item
               sx={{
                 display: "flex",
@@ -86,6 +98,8 @@ export default function Home() {
                 alignItems: "center",
                 fontSize: "1.5rem",
               }}
+              value="Chair"
+              onClick={(e) => fetchByParams("type", e.target.value)}
             >
               <ChairAltIcon sx={{ fontSize: "3rem" }} />
               Chair
@@ -98,6 +112,8 @@ export default function Home() {
                 alignItems: "center",
                 fontSize: "1.5rem",
               }}
+              value="Table"
+              onClick={(e) => fetchByParams("type", e.target.value)}
             >
               <TableRestaurantIcon sx={{ fontSize: "3rem" }} />
               Table
@@ -126,6 +142,7 @@ export default function Home() {
               border: "1px solid rgba(185, 187, 190)",
             }}
           />
+
           <ProdList />
         </Grid>
       </Grid>

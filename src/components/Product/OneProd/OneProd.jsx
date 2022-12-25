@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import IconButton from "@mui/material/IconButton";
 import {
@@ -10,18 +10,16 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { productContext } from "../../Context/ProductContextProvider";
 
 export default function OneProd({ item }) {
+  const { deleteProduct } = useContext(productContext);
+  // const { addProductToCart } = useContext(cartContex);
   const navigate = useNavigate();
   return (
     <div>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={item.img}
-          alt="green iguana"
-        />
+      <Card sx={{ maxWidth: "250px" }}>
+        <CardMedia component="img" image={item.img} alt="Image" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {item.title}
@@ -34,21 +32,15 @@ export default function OneProd({ item }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button
-            size="small"
-            //    onClick={() => deleteProduct(item.id)}
-          >
+          <Button size="small" onClick={() => deleteProduct(item.id)}>
             Delete
           </Button>
-          <Button
-            size="small"
-            //   onClick={() => navigate(`/edit/${item.id}`)}s
-          >
+          <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
             Edit
           </Button>
           <IconButton
             size="small"
-            //   onClick={() => addProductToCart(item)}
+            // onClick={() => addProductToCart(item)}
           >
             <ShoppingCartIcon
             // color={checkProductInCart(item.id ? "primary" : "")}

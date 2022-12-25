@@ -1,14 +1,14 @@
 import React from "react";
 import OneProd from "../OneProd/OneProd";
 import { useContext, useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Pagination } from "@mui/material";
 import { productContext } from "../../Context/ProductContextProvider";
 import { useSearchParams } from "react-router-dom";
 
 const ProdList = () => {
-  const { products, getProducts, fetchByParams } = useContext(productContext);
+  const { products, getProducts } = useContext(productContext);
 
-  //   const count = Math.ceil(products.length / 3);
+  const count = Math.ceil(products.length / 4);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -32,14 +32,14 @@ const ProdList = () => {
   }, [searchParams]);
 
   function currentData() {
-    const begin = page - 1;
-    const end = begin + 3;
+    const begin = (page - 1) * 4;
+    const end = begin + 4;
     return products.slice(begin, end);
   }
 
   return (
-    <Box p={5}>
-      <Grid container spacing={3}>
+    <Box p={2}>
+      <Grid container spacing={2}>
         <Grid
           item
           sx={{
@@ -48,9 +48,10 @@ const ProdList = () => {
             flexWrap: "wrap",
             flexDirection: "column",
           }}
-          md={9}
+          md={12}
         >
           <Box
+            gap={2}
             sx={{
               justifyContent: "center",
               display: "flex",
@@ -65,6 +66,14 @@ const ProdList = () => {
               <h2>Loading...</h2>
             )}
           </Box>
+          <Pagination
+            sx={{ display: "flex", justifyContent: "center" }}
+            count={count}
+            variant="outlined"
+            shape="rounded"
+            onChange={(e, p) => setPage(p)}
+            page={page}
+          />
         </Grid>
       </Grid>
     </Box>
