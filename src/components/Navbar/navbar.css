@@ -16,3 +16,22 @@
     padding-bottom: 10px;
   }
 }
+.css-17sdi6p {
+  padding-top: 70px;
+}
+.css-xn6ruc {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .css-3inafz-MuiTypography-root {
+    display: none !important;
+  }
+  .css-u10pvi-MuiStack-root {
+    display: none !important;
+  }
+}

@@ -1,11 +1,74 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "Title",
-      "price": 100,
-      "type": "Type",
-      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F434%2FAsh.png&w=3840&q=75"
+      "title": "Ash Double",
+      "price": 738,
+      "type": "Bed",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F434%2FAsh.png&w=3840&q=75",
+      "id": 1
+    },
+    {
+      "title": "Brown Hardwood ",
+      "price": 456,
+      "type": "Bed",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F435%2FHardwoods.png&w=3840&q=75",
+      "id": 2
+    },
+    {
+      "title": "Deluxe Mahagony",
+      "price": 560,
+      "type": "Bed",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F436%2FMahogany.png&w=3840&q=75",
+      "id": 3
+    },
+    {
+      "title": "White Cozy ",
+      "price": 150,
+      "type": "Chair",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F457%2FWhite.png&w=3840&q=75",
+      "id": 4
+    },
+    {
+      "title": "Canyon Deluxe ",
+      "price": 980,
+      "type": "Table",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F488%2FCanyon.png&w=3840&q=75",
+      "id": 5
+    },
+    {
+      "title": "Sibeili Cane ",
+      "price": 1300,
+      "type": "Sofa",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F471%2FSIBEILI.png&w=3840&q=75",
+      "id": 6
+    },
+    {
+      "title": "Antero Black",
+      "price": 457,
+      "type": "Sofa",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F458%2FAntero_2Seater.png&w=3840&q=75",
+      "id": 7
+    },
+    {
+      "title": "Aarya Yellow ",
+      "price": 130,
+      "type": "Chair",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F461%2FAarya.png&w=3840&q=75",
+      "id": 8
+    },
+    {
+      "title": "Brothers Stylish",
+      "price": 780,
+      "type": "Table",
+      "img": "https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F482%2FAftab.png&w=3840&q=75",
+      "id": 9
+    },
+    {
+      "title": "xxx",
+      "price": 333,
+      "type": "sadaszzz",
+      "img": "xxx",
+      "id": 10
     }
   ]
 }
