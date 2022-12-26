@@ -80,6 +80,21 @@ const Add = () => {
       >
         Add prod
       </Button>
+      <Button
+        sx={{
+          backgroundColor: "#009f7f",
+          "&:hover": {
+            background: "#009f72",
+          },
+          color: "white",
+        }}
+        onClick={() => {
+          navigate("/");
+        }}
+        variant="outlined"
+      >
+        Go home
+      </Button>
     </Box>
   );
 };

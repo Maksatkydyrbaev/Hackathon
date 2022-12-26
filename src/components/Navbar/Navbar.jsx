@@ -10,8 +10,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Stack } from "@mui/system";
 import InputBase from "@mui/material/InputBase";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { productContext } from "../Context/ProductContextProvider";
+import BurgerMenu from "./BurgerMenu";
+import { authContext } from "../Context/AuthContextProvider";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,8 +54,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
   const { getProducts, fetchByParams } = useContext(productContext);
+
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [search, setSearch] = useState(searchParams.get("q") || "");
+
+  const {
+    handleLogOut,
+    user: { email },
+  } = useContext(authContext);
+
+  const ADMIN = "admin@gmail.com";
 
   useEffect(() => {
     getProducts();
@@ -113,13 +124,18 @@ export default function Navbar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <BurgerMenu />
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block", color: "black" } }}
           >
-            <Stack>
+            <Stack
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
               <ShoppingBasketIcon />
             </Stack>
           </Typography>
@@ -138,17 +154,22 @@ export default function Navbar() {
             >
               Admin
             </Button>
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#009f7f",
-                "&:hover": {
-                  background: "#009f72",
-                },
-              }}
-            >
-              Sign In
-            </Button>
+            <Box sx={{ flexGrow: 0 }}>
+              {email ? (
+                <Button
+                  sx={{ color: "black", fontWeight: "bold" }}
+                  onClick={handleLogOut}
+                >
+                  LOGOUT
+                </Button>
+              ) : (
+                <Link to="/auth">
+                  <Button sx={{ color: "black", fontWeight: "bold" }}>
+                    LOGIN
+                  </Button>
+                </Link>
+              )}
+            </Box>
           </Stack>
         </Toolbar>
       </AppBar>

@@ -11,14 +11,15 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { productContext } from "../../Context/ProductContextProvider";
+import { cartContext } from "../../Context/CartContextProvider";
 
 export default function OneProd({ item }) {
-  const { deleteProduct } = useContext(productContext);
-  // const { addProductToCart } = useContext(cartContex);
+  const { deleteProduct, checkProductInCart } = useContext(productContext);
+  const { addProductToCart } = useContext(cartContext);
   const navigate = useNavigate();
   return (
     <div>
-      <Card sx={{ maxWidth: "250px" }}>
+      <Card sx={{ maxWidth: "230px" }}>
         <CardMedia component="img" image={item.img} alt="Image" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -38,10 +39,7 @@ export default function OneProd({ item }) {
           <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
             Edit
           </Button>
-          <IconButton
-            size="small"
-            // onClick={() => addProductToCart(item)}
-          >
+          <IconButton size="small" onClick={() => addProductToCart(item)}>
             <ShoppingCartIcon
             // color={checkProductInCart(item.id ? "primary" : "")}
             />

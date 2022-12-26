@@ -1,4 +1,4 @@
-import { Grid, Paper } from "@mui/material";
+import { Button, Grid, Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
 import React, { useContext } from "react";
@@ -9,6 +9,7 @@ import TableRestaurantIcon from "@mui/icons-material/TableRestaurant";
 import { Carousel } from "react-carousel-minimal";
 import ProdList from "../Product/ProdList/ProdList";
 import { productContext } from "../Context/ProductContextProvider";
+import "./Home.css";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -45,7 +46,7 @@ export default function Home() {
   return (
     <Box sx={{ width: "100%", backgroundColor: "rgba(243,244,246)" }}>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={3}>
+        <Grid item xs={3} className="grid_home_left">
           <Box
             sx={{
               width: "20%",
@@ -58,69 +59,85 @@ export default function Home() {
               position: "fixed",
             }}
           >
-            <Item
+            <Button
               sx={{
+                backgroundColor: "white",
+                color: "black",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                fontSize: "1.5rem",
+                fontSize: "1rem",
+                "&:hover": {
+                  background: "#009f72",
+                },
               }}
               value="Bed"
-              onClick={(e) => {
-                fetchByParams("type", e.target.value);
-                console.log(e.target.value);
-              }}
+              onClick={(e) => fetchByParams("type", e.target.value)}
             >
               <BedIcon sx={{ fontSize: "3rem" }} />
               Bed
-            </Item>
-            <Item
+            </Button>
+            <Button
               sx={{
+                backgroundColor: "white",
+                color: "black",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                fontSize: "1.5rem",
-              }}
-              value="Sofa"
-              onClick={(e) => fetchByParams("type", e.target.value)}
-            >
-              <ChairIcon sx={{ fontSize: "3rem" }} />
-              Sofa
-            </Item>
-
-            <Item
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "1.5rem",
+                fontSize: "1rem",
+                "&:hover": {
+                  background: "#009f72",
+                },
               }}
               value="Chair"
               onClick={(e) => fetchByParams("type", e.target.value)}
             >
-              <ChairAltIcon sx={{ fontSize: "3rem" }} />
+              <ChairIcon sx={{ fontSize: "3rem" }} />
               Chair
-            </Item>
-            <Item
+            </Button>
+            <Button
               sx={{
+                backgroundColor: "white",
+                color: "black",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                fontSize: "1.5rem",
+                fontSize: "1rem",
+                "&:hover": {
+                  background: "#009f72",
+                },
               }}
               value="Table"
               onClick={(e) => fetchByParams("type", e.target.value)}
             >
-              <TableRestaurantIcon sx={{ fontSize: "3rem" }} />
+              <ChairAltIcon sx={{ fontSize: "3rem" }} />
               Table
-            </Item>
+            </Button>
+            <Button
+              sx={{
+                backgroundColor: "white",
+                color: "black",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "1rem",
+                "&:hover": {
+                  background: "#009f72",
+                },
+              }}
+              value="Sofa"
+              onClick={(e) => fetchByParams("type", e.target.value)}
+            >
+              <TableRestaurantIcon sx={{ fontSize: "3rem" }} />
+              Sofa
+            </Button>
           </Box>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs className="grid_home_rigth">
           <Carousel
             width="100%"
             data={data}

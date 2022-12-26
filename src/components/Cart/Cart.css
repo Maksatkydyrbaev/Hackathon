@@ -1,0 +1,13 @@
+@media (max-width: 426px) {
+  .css-1nslmh4-MuiTableCell-root {
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  .css-1bhpkcd-MuiTableCell-root {
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  .css-1pclhgl-MuiTable-root {
+    min-width: 10px !important;
+  }
+}

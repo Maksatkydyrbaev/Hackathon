@@ -26,3 +26,12 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .css-3inafz-MuiTypography-root {
+    display: none !important;
+  }
+  .css-u10pvi-MuiStack-root {
+    display: none !important;
+  }
+}
