@@ -4,6 +4,9 @@
 .css-tttr48 {
   display: none !important;
 }
+.carousel-image {
+  object-fit: unset !important;
+}
 
 @media (max-width: 1024px) {
   .css-2i5hf7-MuiPaper-root-MuiCard-root {
