@@ -4,7 +4,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
-import CategoryIcon from "@mui/icons-material/Category";
 
 const ITEM_HEIGHT = 48;
 
@@ -67,7 +66,13 @@ export default function BurgerMenu() {
         >
           Admin
         </MenuItem>
-        <MenuItem>Sign In</MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/auth");
+          }}
+        >
+          Sign Up
+        </MenuItem>
       </Menu>
     </>
   );
