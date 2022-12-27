@@ -1,35 +1,38 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
+import Cart from "../Cart/Cart";
+import { cartContext } from "../Context/CartContextProvider";
 
-const products = [
-  {
-    name: "Product 1",
-    desc: "A nice thing",
-    price: "$9.99",
-  },
-  {
-    name: "Product 2",
-    desc: "Another thing",
-    price: "$3.45",
-  },
-  {
-    name: "Product 3",
-    desc: "Something else",
-    price: "$6.51",
-  },
-  {
-    name: "Product 4",
-    desc: "Best thing of all",
-    price: "$14.11",
-  },
-  { name: "Shipping", desc: "", price: "Free" },
-];
+// const products = [
+//   {
+//     name: "Product 1",
+//     desc: "A nice thing",
+//     price: "$9.99",
+//   },
+//   {
+//     name: "Product 2",
+//     desc: "Another thing",
+//     price: "$3.45",
+//   },
+//   {
+//     name: "Product 3",
+//     desc: "Something else",
+//     price: "$6.51",
+//   },
+//   {
+//     name: "Product 4",
+//     desc: "Best thing of all",
+//     price: "$14.11",
+//   },
+//   { name: "Shipping", desc: "", price: "Free" },
+// ];
 
 const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
+
 const payments = [
   { name: "Card type", detail: "Visa" },
   { name: "Card holder", detail: "Mr John Smith" },
@@ -38,23 +41,35 @@ const payments = [
 ];
 
 export default function Review() {
+  const { getCart, cart, changeProductCount, deleteCartProduct } =
+    useContext(cartContext);
+
+  useEffect(() => {
+    getCart();
+  }, []);
+
+  const cartCleaner = () => {
+    localStorage.removeItem("cart");
+    getCart();
+  };
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+        {cart?.products.map((row) => (
+          <ListItem key={row.item.id} sx={{ py: 1, px: 0 }}>
+            <ListItemText primary={row.item.title} secondary={row.item.type} />
+            <Typography variant="body2">{row.item.price} $</Typography>
           </ListItem>
         ))}
 
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
+            {cart.totalPrice} $
           </Typography>
         </ListItem>
       </List>

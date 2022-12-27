@@ -14,8 +14,10 @@ import { productContext } from "../../Context/ProductContextProvider";
 import { cartContext } from "../../Context/CartContextProvider";
 
 export default function OneProd({ item }) {
-  const { deleteProduct, checkProductInCart } = useContext(productContext);
-  const { addProductToCart } = useContext(cartContext);
+  const { deleteProduct } = useContext(productContext);
+
+  const { addProductToCart, checkProductInCart } = useContext(cartContext);
+
   const navigate = useNavigate();
   return (
     <div>
@@ -32,7 +34,7 @@ export default function OneProd({ item }) {
             {item.price}
           </Typography>
         </CardContent>
-        <CardActions>
+        <CardActions sx={{ justifyContent: "space-around", flexWrap: "wrap" }}>
           <Button size="small" onClick={() => deleteProduct(item.id)}>
             Delete
           </Button>
@@ -41,7 +43,7 @@ export default function OneProd({ item }) {
           </Button>
           <IconButton size="small" onClick={() => addProductToCart(item)}>
             <ShoppingCartIcon
-            // color={checkProductInCart(item.id ? "primary" : "")}
+              color={checkProductInCart(item.id) ? "primary" : ""}
             />
           </IconButton>
         </CardActions>
