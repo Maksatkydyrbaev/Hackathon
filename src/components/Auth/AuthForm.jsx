@@ -36,7 +36,6 @@ const AuthForm = () => {
     handleLogOut,
     handleSignUp,
   } = useContext(authContext);
-  console.log(user.email);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,6 +45,9 @@ const AuthForm = () => {
       password: data.get("password"),
     });
   };
+  console.log(email);
+
+  console.log(password);
 
   return (
     <div>
