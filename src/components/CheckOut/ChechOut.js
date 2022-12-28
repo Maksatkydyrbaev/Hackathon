@@ -14,47 +14,19 @@ import AddressForm from "./AddresForm";
 import PaymentForm from "./Payment";
 import Review from "./Review";
 import "./Checkout.css";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const steps = ["Shipping address", "Payment details", "Review your order"];
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
+import { checOutContext } from "../Context/CheckOutContextProvider";
 
 const theme = createTheme();
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
+  const {
+    getStepContent,
+    setActiveStep,
+    handleNext,
+    handleBack,
+    steps,
+    activeStep,
+  } = React.useContext(checOutContext);
 
   return (
     <ThemeProvider theme={theme}>
@@ -86,51 +58,9 @@ export default function Checkout() {
               </Typography>
             </React.Fragment>
           ) : (
-            <React.Fragment>
-              {getStepContent(activeStep)}
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                }}
-              >
-                {activeStep !== 0 && (
-                  <Button
-                    onClick={handleBack}
-                    sx={{
-                      mt: 3,
-                      ml: 1,
-                      backgroundColor: "#009f7f",
-                      color: "white",
-                      "&:hover": {
-                        background: "#009f72",
-                      },
-                    }}
-                  >
-                    Back
-                  </Button>
-                )}
-
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{
-                    mt: 3,
-                    ml: 1,
-                    backgroundColor: "#009f7f",
-                    color: "white",
-                    "&:hover": {
-                      background: "#009f72",
-                    },
-                  }}
-                >
-                  {activeStep === steps.length - 1 ? "Place order" : "Next"}
-                </Button>
-              </Box>
-            </React.Fragment>
+            <React.Fragment>{getStepContent(activeStep)}</React.Fragment>
           )}
         </Paper>
-        <Copyright />
       </Container>
     </ThemeProvider>
   );

@@ -6,39 +6,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import Cart from "../Cart/Cart";
 import { cartContext } from "../Context/CartContextProvider";
-
-// const products = [
-//   {
-//     name: "Product 1",
-//     desc: "A nice thing",
-//     price: "$9.99",
-//   },
-//   {
-//     name: "Product 2",
-//     desc: "Another thing",
-//     price: "$3.45",
-//   },
-//   {
-//     name: "Product 3",
-//     desc: "Something else",
-//     price: "$6.51",
-//   },
-//   {
-//     name: "Product 4",
-//     desc: "Best thing of all",
-//     price: "$14.11",
-//   },
-//   { name: "Shipping", desc: "", price: "Free" },
-// ];
-
-const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
-
-const payments = [
-  { name: "Card type", detail: "Visa" },
-  { name: "Card holder", detail: "Mr John Smith" },
-  { name: "Card number", detail: "xxxx-xxxx-xxxx-1234" },
-  { name: "Expiry date", detail: "04/2024" },
-];
+import { Button } from "@mui/material";
+import { checOutContext } from "../Context/CheckOutContextProvider";
 
 export default function Review() {
   const { getCart, cart, changeProductCount, deleteCartProduct } =
@@ -52,6 +21,36 @@ export default function Review() {
     localStorage.removeItem("cart");
     getCart();
   };
+
+  const {
+    setFirstName,
+    setSecondName,
+    firstName,
+    secondName,
+    getStepContent,
+    setActiveStep,
+    handleNext,
+    handleBack,
+    steps,
+    activeStep,
+    line,
+    lineTwo,
+    lineThree,
+    lineFour,
+    lineFive,
+    lineSix,
+    pay,
+    payTwo,
+    payThree,
+    payFour,
+  } = React.useContext(checOutContext);
+
+  const payments = [
+    { name: "Card type", detail: `${pay}` },
+    { name: "Card holder", detail: `${payTwo}` },
+    { name: "Card number", detail: `${payThree}` },
+    { name: "Expiry date", detail: `${payFour}` },
+  ];
 
   return (
     <React.Fragment>
@@ -78,8 +77,12 @@ export default function Review() {
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(", ")}</Typography>
+          <Typography gutterBottom>
+            {firstName} {secondName}
+          </Typography>
+          <Typography gutterBottom>
+            {line}, {lineTwo}, {lineThree}, {lineFour}, {lineFive}, {lineSix},
+          </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
@@ -97,6 +100,24 @@ export default function Review() {
               </React.Fragment>
             ))}
           </Grid>
+          <Button
+            onClick={() => {
+              handleNext();
+              cartCleaner();
+            }}
+            variant="contained"
+            sx={{
+              mt: 3,
+              ml: 1,
+              backgroundColor: "#009f7f",
+              color: "white",
+              "&:hover": {
+                background: "#009f72",
+              },
+            }}
+          >
+            ORDER
+          </Button>
         </Grid>
       </Grid>
     </React.Fragment>
